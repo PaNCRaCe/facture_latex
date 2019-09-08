@@ -1,0 +1,100 @@
+\def\LabelColor{YellowOrange}
+\def\FieldColor{Gray}
+
+
+\ifthenelse{\equal{\DatesAuto}{oui}}{
+\def\DateEmission{\today}
+\def\DateLimite{\AdvanceDate[30]\DateEmission}
+}{
+\def\DateEmission{\CustomDateEmission}
+\def\DateLimite{\CustomDatePaiement}
+}
+
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\color{\LabelColor}
+
+% Logo de la société
+%\includegraphics{logo.jpg}
+
+\hfil{\Huge\bf FACTURE}\hfil
+\bigskip\break % Whitespace
+\hrule % Horizontal line
+
+~\\
+
+{\bf Référence Facture :} \textcolor{\FieldColor}{\FactureNum} \\
+{\bf Date d'émission :} \textcolor{\FieldColor}{\DateEmission} \\ % Invoice date
+
+\begin{minipage}{6cm}
+{
+POUR LE COMPTE DE
+\vspace{3mm}
+\hrule % Horizontal line
+\vspace{3mm}
+\color{\FieldColor}
+% Nom et adresse de la société
+{\bf \EntrepriseNom}\\
+\EntrepriseAdresse\\
+SIRET : \SIRET
+}
+\end{minipage}
+%\addtolength{\leftskip}{10.5cm} %in ERT
+\hfill
+\begin{minipage}{6cm}
+{
+CLIENT
+\vspace{3mm}
+\hrule % Horizontal line
+\vspace{3mm}
+\color{\FieldColor}
+\textbf{\ClientNom}	\\
+\ClientAdresse		\\
+
+} %in ERT
+\end{minipage}
+
+~\\~\\
+
+\textcolor{\FieldColor}{\textnormal{\FactureDescr}}
+\color{\FieldColor}
+
+\FactureTable
+
+\color{\FieldColor}
+
+\vfill
+
+\ifthenelse{\equal{\FactureAcquittee}{oui}}{
+	\large Facture acquittée.\\
+	\vfill
+}{
+
+	En votre aimable règlement au plus tard le \DateLimite, par virement bancaire.
+
+	\RIBTable
+
+\footnotesize {\color{\LabelColor}
+
+Il est rappelé qu'en vertu de l'Article L 441-6 du Code de Commerce, l'absence de règlement 30 jours après l'émission de la présente facture entraînera l'application d'intérêts de retard au taux de trois fois le taux d'intérêt légal en vigueur et l'application de plein droit d'une indemnité forfaitaire pour frais de recouvrements de 40\euro.
+
+	\vfill
+}
+
+}
+
+% footer
+\cfoot{
+\color{\LabelColor}
+\small{
+\EntrepriseNom\\
+Telephone : \Tel ~--~ E-mail : \Mail\\
+SIREN \SIREN ~--~ Code APE \APE}\\
+\footnotesize {
+Dispensé d'immatriculation au registre du commerce et des sociétés et au répertoire des métiers
+}
+}
+
+\end{document}

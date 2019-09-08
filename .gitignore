@@ -1,0 +1,7 @@
+templates/facture.cls
+*.swp
+*.un~
+*.pdf
+build
+*.txt~
+*.tex~
