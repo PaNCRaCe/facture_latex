@@ -1,0 +1,114 @@
+ \def\FooterColor{Gray}
+
+\documentclass[11pt]{letter}
+\usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc} % un second package
+ \usepackage[french]{babel} % un troisième package
+ \usepackage{textcomp}
+ \usepackage{ifpdf}
+ \usepackage[left=2cm,right=2cm,top=2cm,bottom=4cm,footskip=1cm]{geometry}
+ \usepackage{ifthen}
+ \usepackage[dvipsnames]{xcolor}
+
+
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+ %\footskip{8pt}
+
+\usepackage{fancyhdr}
+\thispagestyle{fancy}
+%\pagestyle{fancy}
+
+% ajouts
+%\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[sfdefault]{cabin}
+
+\newcommand{\forceindent}{\leavevmode{\parindent=1cm\indent}}\renewcommand{\headrulewidth}{0pt}
+
+
+\ifpdf
+ \usepackage[pdftex]{graphicx}
+ \else
+ \usepackage[dvips]{graphicx}\fi
+%\pagestyle{empty}
+\pagestyle{fancy}
+%\usepackage[scale=0.85]{geometry}
+ \setlength{\parindent}{0cm}
+% \addtolength{\parskip}{6pt}
+\renewcommand{\ttdefault}{pcr}
+
+
+
+
+ \begin{document}
+ \sffamily
+ \hfill
+ %
+ \begin{flushleft}
+ \begin{minipage}{5cm}
+ {
+ \textbf{\monNom\\
+ \EntrepriseNom\\}
+ \itshape
+ \EntrepriseAdresse\\
+ SIRET : \SIRET
+ }
+ \end{minipage}
+ \end{flushleft}
+ %
+ \begin{flushright}
+ \begin{minipage}{5cm}
+ {
+ {\bfseries \NomDestinataire}\\
+ \itshape
+ \AdresseDestinataire
+ }
+ \end{minipage}
+ \end{flushright}
+
+\bigskip
+
+\ifthenelse{\equal{\LettreAvecAR}{oui}}{
+ \begin{flushleft}
+ \bf \textit{\underline{Lettre recommandée avec accusé de réception: n°\NumeroSuiviAR}}
+ \end{flushleft}
+}{}
+ 
+ %
+ \hfill
+ %
+ 
+ \begin{flushleft}
+ \noindent {\bfseries OBJET : \objet}
+ \end{flushleft}
+ %\forceindent Madame,
+
+\bigskip
+
+\corps
+
+\bigskip
+
+\begin{flushleft}
+{\bfseries \monNom, le \date}\\
+\end{flushleft}
+ 
+ \ifthenelse{\equal{\InclureSignature}{oui}}{
+ \bigskip
+ \hspace{1.5cm} \includegraphics[width=5cm]{\SignaturePath}
+ }{}
+
+ \hfill
+ % footer
+\cfoot{
+\color{\FooterColor}
+\small{
+\EntrepriseNom\\
+Telephone : \Tel ~--~ E-mail : \Mail\\
+SIREN \SIREN ~--~ Code APE \APE}\\
+\footnotesize {
+Dispensé d'immatriculation au registre du commerce et des sociétés et au répertoire des métiers
+}}
+
+ \end{document}

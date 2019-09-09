@@ -1,4 +1,5 @@
 templates/facture.cls
+*.png
 *.swp
 *.un~
 *.pdf

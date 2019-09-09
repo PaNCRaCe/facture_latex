@@ -1,0 +1,34 @@
+\RequirePackage[utf8]{inputenc} % import de inputenc ici sinon pb à l'encodage des variables...
+
+\RequirePackage{lipsum} % Used for inserting dummy text into the template
+
+\def\LettreAvecAR{non}
+\def\NumeroSuiviAR{0X 000 000 0000 0}
+
+\def\InclureSignature{non}
+\def\SignaturePath{templates/signature3.png}
+
+\def \NomDestinataire{
+M. Michel MACHIN \\
+Mon Client \& Co
+}
+\def \AdresseDestinataire{
+1 rue du Moulin \\
+24310, Brantôme
+}
+
+\def\date{\today}
+
+\def \objet{Déclaration liée à un truc}
+
+\def\corps{
+Madame, Monsieur,
+
+\lipsum[1]
+
+Je vous prie d'agréer l'expression de mes sincères salutations.
+}
+
+
+\input{templates/mesInfos}
+\input{templates/lettreTemplate}
